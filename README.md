@@ -37,13 +37,16 @@ This project is a web application built with Flask and PySpark that fetches fede
    ```
 
 ## Usage
-
-1. Run the application:
+1. Go to src dir
    ```bash
-   python src/app.py
+   cd src
    ```
-2. Open your web browser and go to `http://127.0.0.1:5000/`.
-3. Enter the fiscal year and quarter to fetch and visualize spending data.
+2. Run the application:
+   ```bash
+   python -m app.py
+   ```
+3. Open your web browser and go to `http://127.0.0.1:5000/`.
+4. Enter the fiscal year and quarter to fetch and visualize spending data.
 
 ## Data Storage
 
