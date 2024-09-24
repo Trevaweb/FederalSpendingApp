@@ -120,7 +120,13 @@ def index():
         plt.tight_layout()  # Automatically adjust subplot parameters
         plt.subplots_adjust(bottom=0.5, top=0.85)  # Adjust margins
 
-        plt.savefig(f'static/spending_chart_fy{fy}_q{quarter}.png')  # Save the plot as an image
+        # Create a directory for static files if it doesn't exist
+        static_dir = 'static'
+        if not os.path.exists(static_dir):
+            os.makedirs(static_dir)
+
+        # Save the plot as an image
+        plt.savefig(os.path.join(static_dir, f'spending_chart_fy{fy}_q{quarter}.png'))  # Save the plot as an image
         plt.close()
 
         return render_template('spending.html', top_data=top_data, bottom_data=bottom_data, fy=fy, quarter=quarter)
