@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spending for FY {{ fy }} Quarter {{ quarter }}</title>
+</head>
+<body>
+    <h1>Total Spending for FY {{ fy }}, Quarter {{ quarter }}</h1>
+    <img src="{{ url_for('static', filename='spending_chart_fy' + fy + '_q' + quarter + '.png') }}" alt="Spending Chart">
+    
+    <h2>Top 10 Highest Spending:</h2>
+    <ul>
+        {% for item in top_data %}
+            <li>{{ item.name }}: ${{ item.total_spending }}</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Top 10 Lowest Spending:</h2>
+    <ul>
+        {% for item in bottom_data %}
+            <li>{{ item.name }}: ${{ item.total_spending }}</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Re-enter Fiscal Year and Quarter</h2>
+    <form method="POST" action="{{ url_for('index') }}">
+        <label for="fy">Fiscal Year:</label>
+        <input type="text" id="fy" name="fy" required>
+        <br>
+        <label for="quarter">Quarter:</label>
+        <input type="text" id="quarter" name="quarter" required>
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
